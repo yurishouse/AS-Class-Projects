@@ -1,5 +1,6 @@
 package com.example.droidcafe;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -12,9 +13,16 @@ import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static final String EXTRA_MESSAGE = "com.example.droidcafe.extra.MESSAGE";
+
+    private String mOrderMessage;
+    private String mOrderItem;
 
     public void displayToast(String message) {
         Toast.makeText(getApplicationContext(), message,
@@ -32,8 +40,13 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(MainActivity.this, OrderActivity.class);
+                // pack both things in a bundle and pass it on
+                Bundle extras = new Bundle();
+                extras.putString("EXTRA_MESSAGE",mOrderMessage);
+                extras.putString("EXTRA_ITEM",mOrderItem);
+                intent.putExtras(extras);
+                startActivity(intent);
             }
         });
     }
@@ -64,6 +77,8 @@ public class MainActivity extends AppCompatActivity {
      * Shows a message that the donut image was clicked.
      */
     public void showDonutOrder(View view) {
+        mOrderMessage = getString(R.string.donut_order_message);
+        mOrderItem = "Donut";
         displayToast(getString(R.string.donut_order_message));
     }
 
@@ -71,6 +86,8 @@ public class MainActivity extends AppCompatActivity {
      * Shows a message that the ice cream sandwich image was clicked.
      */
     public void showIceCreamOrder(View view) {
+        mOrderMessage = getString(R.string.ice_cream_order_message);
+        mOrderItem = "Ice Cream Sandwich";
         displayToast(getString(R.string.ice_cream_order_message));
     }
 
@@ -78,6 +95,8 @@ public class MainActivity extends AppCompatActivity {
      * Shows a message that the froyo image was clicked.
      */
     public void showFroyoOrder(View view) {
+        mOrderMessage = getString(R.string.froyo_order_message);
+        mOrderItem = "Froyo";
         displayToast(getString(R.string.froyo_order_message));
     }
 }
