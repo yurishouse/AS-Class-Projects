@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:text="Date"
+        android:text="@string/date_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:text="TextView"
+        android:text="@string/time_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/date_text" />
 
@@ -39,29 +39,62 @@
             android:id="@+id/setColor_pink"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Pink"
+            android:text="@string/pink"
             android:onClick="onRadioButtonClicked"/>
 
         <RadioButton
             android:id="@+id/setColor_red"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Red"
+            android:text="@string/red"
             android:onClick="onRadioButtonClicked"/>
 
         <RadioButton
             android:id="@+id/setColor_cyan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="cyan"
+            android:text="@string/cyan"
             android:onClick="onRadioButtonClicked"/>
 
         <RadioButton
             android:id="@+id/setColor_yellow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Yellow"
+            android:text="@string/yellow"
             android:onClick="onRadioButtonClicked"/>
     </RadioGroup>
+
+    <Button
+        android:id="@+id/Set_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="24dp"
+        android:text="@string/set_date"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:onClick="showDatePicker" />
+
+    <Button
+        android:id="@+id/set_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="24dp"
+        android:text="@string/set_time"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Set_date"
+        android:onClick="showTimePicker"/>
+
+    <Button
+        android:id="@+id/Exit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="24dp"
+        android:text="@string/exit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/set_time"
+        android:onClick="exitDialog" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
