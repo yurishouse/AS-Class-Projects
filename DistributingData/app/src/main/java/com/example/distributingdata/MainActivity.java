@@ -107,14 +107,12 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     private RecyclerView mRecyclerView;
     private BookListAdapter mAdapter;
     //
+    private final LinkedList<String> mWordList = new LinkedList<>();
+    //
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //
-        for (int i = 0; i < 20; i++) {
-            mBookList.addLast("Word " + i);
-        }
         //
         mBookInput = (EditText)findViewById(R.id.bookInput);
         mTitleText = (TextView)findViewById(R.id.titleText);
@@ -123,10 +121,16 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         if(LoaderManager.getInstance(this).getLoader(0)!=null){
             LoaderManager.getInstance(this).initLoader(0,null,this);
         }
+        setContentView(R.layout.activity_main);
+        // Put initial data into the word list.
+        for (int i = 0; i < 20; i++) {
+            mWordList.addLast("Word " + i);
+        }
+
         // Get a handle to the RecyclerView.
         mRecyclerView = findViewById(R.id.BookView);
         // Create an adapter and supply the data to be displayed.
-        mAdapter = new BookListAdapter(this, mBookList);
+        mAdapter = new BookListAdapter(this, mWordList);
         // Connect the adapter with the RecyclerView.
         mRecyclerView.setAdapter(mAdapter);
         // Give the RecyclerView a default layout manager.

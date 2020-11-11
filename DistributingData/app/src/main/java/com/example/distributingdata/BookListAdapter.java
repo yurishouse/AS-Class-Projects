@@ -23,11 +23,11 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.WordVi
     private final LinkedList<String> mWordList;
 
     class WordViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        public final TextView BookItemView;
+        public final TextView wordItemView;
         final BookListAdapter mAdapter;
         public WordViewHolder(View itemView, BookListAdapter adapter) {
             super(itemView);
-            BookItemView = itemView.findViewById(R.id.BookView);
+            wordItemView = itemView.findViewById(R.id.Book);
             this.mAdapter = adapter;
             itemView.setOnClickListener(this);
         }
@@ -58,7 +58,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.WordVi
     @Override
     public void onBindViewHolder(WordViewHolder holder, int position) {
         String mCurrent = mWordList.get(position);
-        holder.BookItemView.setText(mCurrent);
+        holder.wordItemView.setText(mCurrent);
     }
 
     @Override
