@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Adventure of life</string>
+    <string name="SaveButton">SAVE</string>
+    <string name="LoadButton">LOAD</string>
+    <string name="LogButton">LOG</string>
+    <string name="ExitButton">EXIT</string>
+    <string name="HPtextview">HP</string>
+    <string name="stamina">Stamina</string>
+    <string name="MainTextView">Story</string>
+    <string name="status">Status</string>
+</resources>

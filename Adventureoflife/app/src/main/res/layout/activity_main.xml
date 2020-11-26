@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@drawable/bg"
+    android:padding="16dp"
+    android:scaleType="center">
+
+    <Button
+        android:id="@+id/SaveState"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/SaveButton"
+        app:layout_constraintBottom_toTopOf="@+id/LoadState"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="@color/pink"/>
+
+    <Button
+        android:id="@+id/LoadState"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/LoadButton"
+        app:layout_constraintBottom_toTopOf="@+id/LogLookup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/SaveState"
+        android:backgroundTint="@color/pink"/>
+
+    <Button
+        android:id="@+id/LogLookup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/LogButton"
+        app:layout_constraintBottom_toTopOf="@+id/ExitButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/LoadState"
+        android:backgroundTint="@color/pink"/>
+
+    <Button
+        android:id="@+id/ExitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/ExitButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/LogLookup"
+        android:backgroundTint="@color/pink"/>
+
+    <TextView
+        android:id="@+id/Status"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/round_location"
+        android:text="@string/status"
+        android:textAlignment="center"
+        android:textColor="@color/pale_pink"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/MainTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:text="@string/MainTextView"
+        app:layout_constraintBottom_toTopOf="@+id/SaveState"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Status"
+        android:background="@drawable/round_corner"
+        android:textColor="@color/pink"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="223dp"
+        android:layout_height="240dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ExitButton"
+        app:layout_constraintEnd_toStartOf="@+id/SaveState"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/SaveState"
+        app:layout_constraintVertical_bias="0.428" />
+</androidx.constraintlayout.widget.ConstraintLayout>
