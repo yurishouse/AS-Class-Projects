@@ -16,6 +16,7 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
         android:text="@string/SaveButton"
+        android:onClick="Save"
         app:layout_constraintBottom_toTopOf="@+id/LoadState"
         app:layout_constraintEnd_toEndOf="parent"
         android:backgroundTint="@color/pink"/>
@@ -27,6 +28,7 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
         android:text="@string/LoadButton"
+        android:onClick="Load"
         app:layout_constraintBottom_toTopOf="@+id/LogLookup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/SaveState"
@@ -39,11 +41,13 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
         android:text="@string/LogButton"
+        android:onClick="ShowLog"
         app:layout_constraintBottom_toTopOf="@+id/ExitButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/LoadState"
         android:backgroundTint="@color/pink"/>
 
+    <!-- Exit is finished -->
     <Button
         android:id="@+id/ExitButton"
         android:layout_width="wrap_content"
@@ -51,10 +55,12 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
         android:text="@string/ExitButton"
+        android:onClick="Exit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/LogLookup"
         android:backgroundTint="@color/pink"/>
+
 
     <TextView
         android:id="@+id/Status"
