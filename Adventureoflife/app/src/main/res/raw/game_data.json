@@ -1,0 +1,169 @@
+{
+    "GameName":"",
+    "GameEnvironmentVariables":{
+        "variable1": {"type": "int", "value": 1}
+    },
+    "GameInitStage": "Start",
+    "GameStages":{
+        "Start":{
+            "StageComponents":[
+            {"type":"text","content": "Warning This game may contain content subject to death, suicide, depression, and more. \n Do you with to continue"}
+            ,{"type":"choice-link","content":"Yes","action":"Yes"},
+            {"type":"choice-link","content":"No","action":"No"}
+            ]
+        },
+        "Yes":{
+            "StageComponents": [
+                {"type": "text", "content": "Initalizing....\n\nIt's a new day, a new start of your life perhaps. You decided to move to a new place, a place where you can finally live by yourself. \n\nYou unlocked the door of your new apartment, this is going to be the place you live from now on. \n\nAs you expected, there's nothing here yet. But you have heard that there's a large store nearby, where you can get basically everything... if you have the cash."},
+                {
+                    "type": "choice-link",
+                    "content": "Enter the house",
+                    "action": "House"
+                },
+                {
+                    "type": "command-set",
+                    "variable":"health",
+                    "value": {
+                        "type": "int",
+                        "value": 10
+                    }
+                },
+                {
+                    "type": "command-set",
+                    "variable":"cash",
+                    "value": {
+                        "type": "int",
+                        "value": 1000
+                    }
+                },
+                {
+                    "type": "command-set",
+                    "variable":"day",
+                    "value": {
+                        "type": "int",
+                        "value": 1
+                    }
+                },
+                {
+                    "type": "command-set",
+                    "variable":"Hasbed",
+                    "value": {
+                        "type": "bool",
+                        "value": false
+                    }
+                },
+                {
+                    "type": "command-set",
+                    "variable":"eventActive",
+                    "value": {
+                        "type": "int",
+                        "value": 0
+                    }
+                },
+                {
+                    "type": "command-set",
+                    "variable":"feed",
+                    "value": {
+                        "type": "int",
+                        "value": 0
+                    }
+                }
+            ]
+        },
+        "No":{
+            "StageComponents":[
+                {"type":"text", "content": "I understand, it's scary right? playing a game that you know you will eventually die no matter what you do(or, maybe not?) \n Thanks for coming though, I'll see you next time. \n \n If you're here just to check out this message \n Click [Start] to get back to Start"},
+                {"type":"choice-link","content":"Start","action":"Start"}
+
+            ]
+
+        },
+        "House":{
+            "StageComponents":[
+                {"type":"text", "content": "Home \n This is Your home."},
+                {
+                    "type": "choice-link",
+                    "content": "Bedroom",
+                    "action": "Bedroom"
+                },                {
+                    "type": "choice-link",
+                    "content": "Living Room",
+                    "action": "LivingRoom"
+                },                {
+                    "type": "choice-link",
+                    "content": "Bathroom",
+                    "action": "Bathroom"
+                },                {
+                    "type": "choice-link",
+                    "content": "Your Bag",
+                    "action": "YourBag"
+                },                {
+                    "type": "choice-link",
+                    "content": "Exit",
+                    "action": "Exit"
+                }
+            ]
+        }
+
+        ,
+        "Event3":{
+            "StageComponents": [
+                {"type":"text", "content": "You received a mail, it is:"},
+                {
+                    "type":"random", 
+                    "contents": [
+                        {"type":"components", "contents":[
+                            {"type": "text", "content": "A small package, feels like something heavy inside"},
+                            {
+                                "type": "choice-link",
+                                "content": "Open it",
+                                "action": "mail1"
+                            }
+                        ]},
+                        {"type":"components", "contents":[
+                            {"type": "text", "content": "A large box, with some marking on it."},
+                            {
+                                "type": "choice-link",
+                                "content": "Open it",
+                                "action": "mail2"
+                            }
+                        ]},
+                        {"type":"components", "contents":[
+                            {"type": "text", "content": "Some useless ad paper"},
+                            {
+                                "type": "choice-link",
+                                "content": "Discard it",
+                                "action": "House"
+                            }
+                        ]},
+                        {"type":"components", "contents":[
+                            {"type": "text", "content": "Someone else's news paper..."},
+                            {
+                                "type": "choice-link",
+                                "content": "What a mistake",
+                                "action": "House"
+                            }
+                            ]}
+                    ]
+                },
+                {
+                    "type":"command-set",
+                    "variable":"Hasbed",
+                    "value": {
+                        "type": "bool",
+                        "value": true
+                    }
+                },
+                {
+                    "type":"conditional",
+                    "condition": {
+                        "type": "bool",
+                        "varname": "Hasbed"
+                    },
+                    "component-true": {},
+                    "component-false": {}
+                }
+            ]
+        }
+    }
+}

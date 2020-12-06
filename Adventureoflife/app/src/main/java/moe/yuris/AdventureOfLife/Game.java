@@ -4,8 +4,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONArray;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.StringWriter;
+import java.io.Writer;
 import java.nio.file.FileSystemException;
 import java.util.LinkedList;
+import java.util.Random;
 
 public class Game {
     private String gameFilePath;
@@ -22,7 +29,10 @@ public class Game {
     public Game(String path) throws FileSystemException, JSONException {
         this.gameFilePath = path;
         this.gameDataObject = readFromFile(path);
+        currentStageChoices = new LinkedList<String>();
+        currentStageChoicesResults = new LinkedList<CallBack>();
         interpretingJSONAndInitGlobalVariables();
+
     }
 
     /**
@@ -102,6 +112,12 @@ public class Game {
                         throw new RuntimeException("UOFG9736-Game Data File Cannot be interpeted!");
                 }
                 break;
+            case "random":
+                int numAvilable = component.getJSONArray("contents").length();
+                Random r = new Random();
+                int index = r.nextInt(numAvilable);
+                interpetingComponent(component.getJSONArray("contents").getJSONObject(index));
+                break;
             case "command-set":
                 switch (component.getJSONObject("value").getString("type")) {
                     case "bool":
@@ -127,9 +143,10 @@ public class Game {
         currentStageChoicesResults.get(index).exec();
     }
 
-    public static JSONObject readFromFile(String path) throws FileSystemException, JSONException {
+    public static JSONObject readFromFile(String json) throws JSONException {
         //TODO
-        return new JSONObject("{}");
+        //return new JSONObject("{\"GameName\":\"AOL\",\"GameEnvironmentVariables\":{\"variable1\": {\"type\": \"int\", \"value\": 1}},\"GameInitStage\": \"Start\",\"GameStages\":{\"Start\":{\"StageComponents\": [{\"type\":\"text\", \"content\": \"You received a mail, it is:\"}]}}}");
+        return new JSONObject(json);
     }
 
 }

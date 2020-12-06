@@ -10,6 +10,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import org.json.JSONException;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.StringWriter;
+import java.io.UnsupportedEncodingException;
+import java.io.Writer;
+import java.nio.file.FileSystemException;
 import java.util.LinkedList;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private ChoiceAdapter mAdapter;
     private TextView mMainTextView;
     private TextView mStatus;
+    private Game game;
 
     private final LinkedList<String> mChoiceList = new LinkedList<>();
 
@@ -25,6 +37,27 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        try {
+            InputStream is =  getResources().openRawResource(R.raw.game_data);
+            Writer writer = new StringWriter();
+            char[] buffer = new char[10240];
+            try {
+                Reader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+                int n;
+                while ((n = reader.read(buffer)) != -1) {
+                    writer.write(buffer, 0, n);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                is.close();
+            }
+
+            String jsonString = writer.toString();
+            game = new Game(jsonString);
+        } catch (JSONException | IOException e) {
+            e.printStackTrace();
+        }
         setContentView(R.layout.activity_main);
 
         for (int i = 0; i < 20; i++) {
@@ -43,7 +76,24 @@ public class MainActivity extends AppCompatActivity {
         // Give the RecyclerView a default layout manager.
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        onUpdatePage();
 
+
+    }
+
+    public void onUpdatePage() {
+        mMainTextView.setText(game.getCurrentStageText());
+        mChoiceList.clear();
+        for (String s : game.getCurrentStageChoices()){
+            mChoiceList.add(s);
+        }
+        // mRecyclerView.notify();
+        mAdapter.notifyDataSetChanged();
+    }
+
+    public void choiceCallback(int index){
+        game.chooseAndAdvance(index);
+        onUpdatePage();
     }
 
     public void Load(View view) {

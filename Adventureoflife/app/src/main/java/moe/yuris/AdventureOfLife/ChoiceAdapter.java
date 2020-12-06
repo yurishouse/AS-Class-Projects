@@ -14,10 +14,12 @@ import java.util.LinkedList;
 public class ChoiceAdapter extends RecyclerView.Adapter<ChoiceAdapter.ChoiceHolder> {
 
     public ChoiceAdapter(Context context, LinkedList<String> wordList) {
+        controller = (MainActivity) context;
         mInflater = LayoutInflater.from(context);
         this.mChoiceList = wordList;
     }
     private LayoutInflater mInflater;
+    MainActivity controller;
 
     private final LinkedList<String> mChoiceList;
 
@@ -57,12 +59,14 @@ public class ChoiceAdapter extends RecyclerView.Adapter<ChoiceAdapter.ChoiceHold
             // Get the position of the item that was clicked.
             int mPosition = getLayoutPosition();
             // Use that to access the affected item in mWordList.
-            String element = mChoiceList.get(mPosition);
+            //String element = mChoiceList.get(mPosition);
             // Change the word in the mWordList.
-            mChoiceList.set(mPosition, "Clicked! " + element);
+            //mChoiceList.set(mPosition, "Clicked! " + element);
+
             // Notify the adapter, that the data has changed so it can
             // update the RecyclerView to display the data.
-            mAdapter.notifyDataSetChanged();
+            //mAdapter.notifyDataSetChanged();
+            controller.choiceCallback(mPosition);
         }
     }
 }
