@@ -89,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
         }
         // mRecyclerView.notify();
         mAdapter.notifyDataSetChanged();
+        mStatus.setText(game.getCurrentStatusText());
     }
 
     public void choiceCallback(int index){
