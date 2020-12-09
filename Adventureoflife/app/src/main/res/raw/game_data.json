@@ -1,7 +1,7 @@
 {
   "GameName": "",
   "GameEnvironmentVariables": {
-    "variable1": { "type": "int", "value": 1 },
+    "day": { "type": "int", "value": 1 },
     "health": { "type": "int", "value": 10 },
     "cash": { "type": "int", "value": 1000 },
     "Hasbed": { "type": "bool", "value": false },
@@ -18,28 +18,39 @@
       "value": false
     }
   },
-  "GameStatusLine":{
-      "type": "components",
-      "contents": [
-          {
-              "type": "text",
-              "content": "Current Stage: "
-          },
-          {
-                "type": "currentStageName"
-          },
-          {
-                "type": "text",
-                "content": "  HP: "
-          },
-          {
-              "type": "value",
-              "value":{
-                  "type":"variable",
-                  "variableName": "health"
-              }
-          }
-      ]
+  "GameStatusLine": {
+    "type": "components",
+    "contents": [
+      {
+        "type": "text",
+        "content": "Current Stage: "
+      },
+      {
+        "type": "currentStageName"
+      },
+      {
+        "type": "text",
+        "content": " HP: "
+      },
+      {
+        "type": "value",
+        "value": {
+          "type": "variable",
+          "variableName": "health"
+        }
+      },
+      {
+        "type": "text",
+        "content": " Day: "
+      },
+      {
+        "type": "value",
+        "value": {
+          "type": "variable",
+          "variableName": "day"
+        }
+      }
+    ]
   },
   "GameInitStage": "Start",
   "GameStages": {
@@ -141,6 +152,11 @@
               }
             ]
           }
+        },
+        {
+          "type": "choice-link",
+          "content": "Back to the house",
+          "action": "House"
         }
       ]
     },
@@ -150,7 +166,24 @@
           "type": "text",
           "content": "You sleep comfortablly on your bed, it keeps you safe from the cold night. \n\n You feels better \n\nhealth +1"
         },
-
+        {
+          "type": "command-set",
+          "variable":"health",
+      "value": {
+          "type": "calculation",
+          "operation": "add",
+          "operands": [
+              {
+                  "type": "variable",
+                  "variableName": "health"
+              },
+              {
+                  "type": "int",
+                  "value": 1
+              }
+          ]
+      }
+      },
         {
           "type": "conditional",
           "condition": {
@@ -167,14 +200,77 @@
               {
                 "type": "text",
                 "content": "You forgot to eat something before you sleep, the hunger almost drives you crazy"
-              }
+              },
+              {
+                "type": "command-set",
+                "variable":"health",
+            "value": {
+                "type": "calculation",
+                "operation": "minus",
+                "operands": [
+                    {
+                        "type": "variable",
+                        "variableName": "health"
+                    },
+                    {
+                        "type": "int",
+                        "value": 2
+                    }
+                ]
+            }
+            }
             ]
           }
         },
         {
+          "type": "conditional",
+          "condition": {
+            "type": "not",
+            "condition": {
+              "type": "int-greater",
+              "value1": {
+                "type": "variable",
+                "variableName": "health"
+              },
+              "value2": {
+                "type": "int",
+                "value": 0
+              }
+            }
+          },
+          "component-true": {
+            "type": "components",
+            "contents": [
+              {
+                "type": "choice-link",
+                "content": "END",
+                "action": "ENDING1"
+              }
+            ]
+          },
+          "component-false": {
+            "type": "components",
+            "contents": [
+              {
+                "type": "choice-link",
+                "content": "New Day",
+                "action": "New Day"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "ENDING1": {
+      "StageComponents": [
+        {
+          "type": "text",
+          "content": "You never woke up again... your body just gived up. \n at lease you died in dreamland... maybe with some luck, you won't even feel the last bit of suffering before you die. \n \n I guess"
+        },
+        {
           "type": "choice-link",
-          "content": "New Day",
-          "action": "New Day"
+          "content": "Replay",
+          "action": "Start"
         }
       ]
     },
@@ -200,33 +296,103 @@
               {
                 "type": "text",
                 "content": "You forgot to eat something before you sleep, the hunger almost drives you crazy"
-              }
+              },
+              {
+                "type": "command-set",
+                "variable":"health",
+            "value": {
+                "type": "calculation",
+                "operation": "minus",
+                "operands": [
+                    {
+                        "type": "variable",
+                        "variableName": "health"
+                    },
+                    {
+                        "type": "int",
+                        "value": 2
+                    }
+                ]
+            }
+            }
             ]
           }
         },
         {
-          "type": "choice-link",
-          "content": "New Day",
-          "action": "New Day"
+          "type": "conditional",
+          "condition": {
+            "type": "not",
+            "condition": {
+              "type": "int-greater",
+              "value1": {
+                "type": "variable",
+                "variableName": "health"
+              },
+              "value2": {
+                "type": "int",
+                "value": 0
+              }
+            }
+          },
+          "component-true": {
+            "type": "components",
+            "contents": [
+              {
+                "type": "choice-link",
+                "content": "END",
+                "action": "ENDING1"
+              }
+            ]
+          },
+          "component-false": {
+            "type": "components",
+            "contents": [
+              {
+                "type": "choice-link",
+                "content": "New Day",
+                "action": "New Day"
+              }
+            ]
+          }
         }
       ]
     },
     "New Day": {
-      "StageComponents": [{ "type": "text", "content": "A new Day" },
+      "StageComponents": [
         {
-            "type": "choice-link",
-            "content": "Back to the house",
-            "action": "House"
-          }]
+          "type": "command-set",
+          "variable":"day",
+      "value": {
+          "type": "calculation",
+          "operation": "add",
+          "operands": [
+              {
+                  "type": "variable",
+                  "variableName": "day"
+              },
+              {
+                  "type": "int",
+                  "value": 1
+              }
+          ]
+      }
+      },
+        { "type": "text", "content": "A new Day" },
+        {
+          "type": "choice-link",
+          "content": "Back to the house",
+          "action": "House"
+        }
+      ]
     },
     "LivingRoom": {
       "StageComponents": [
         { "type": "text", "content": "This is your living room" },
         {
-            "type": "choice-link",
-            "content": "Back to the house",
-            "action": "House"
-          },
+          "type": "choice-link",
+          "content": "Back to the house",
+          "action": "House"
+        },
         {
           "type": "conditional",
           "condition": {
@@ -281,7 +447,21 @@
       ]
     },
     "Watch TV": {
-      "StageComponents": []
+      "StageComponents": [{
+        "type":"random",
+        "contents": [
+            {"type": "text", "content": "Local weather Report: Rainy day for most part of the week"},
+            {"type": "text", "content": "Some cartoon that seems to be made by japanese artist"},
+            {"type": "text", "content": "Breaking news: a remote country have been destroyed by war."},
+            {"type": "text", "content": "Local weather Report: Sunny day for most part of the week"},
+            {"type": "text", "content": "Breaking news: The suicide rate of young adult have reached it's peak. Said Professor L. S."}
+        ]},
+        {
+          "type": "choice-link",
+          "content": "Turn off TV",
+          "action": "LivingRoom"
+        }
+      ]
     },
     "Work on Project": {
       "StageComponents": []
@@ -293,10 +473,10 @@
           "content": "A simple bathroom with a sink and a shower area"
         },
         {
-            "type": "choice-link",
-            "content": "Back to the house",
-            "action": "House"
-          },
+          "type": "choice-link",
+          "content": "Back to the house",
+          "action": "House"
+        },
         {
           "type": "conditional",
           "condition": {
@@ -352,31 +532,68 @@
     "YourBag": {
       "StageComponents": [
         {
-            "type": "choice-link",
-            "content": "Back to the house",
-            "action": "House"
-          }
+          "type": "choice-link",
+          "content": "Back to the house",
+          "action": "House"
+        }
       ]
     },
     "Exit": {
       "StageComponents": [
+        { "type": "text", "content": "Where You want to go?" },
         {
-            "type": "choice-link",
-            "content": "Back to the house",
-            "action": "House"
-          }
+          "type": "choice-link",
+          "content": "Not now",
+          "action": "House"
+        },
+        {
+          "type": "choice-link",
+          "content": "Market",
+          "action": "Market"
+        }
       ]
     },
     "Market": {
-      "StageComponents": []
+      "StageComponents": [
+        { "type": "text", "content": "A small but busy street next to where you live, It has a few shop in it. \nA Flower Shop that has a pleasant smell coming out of it.\nA few Restaurants , some are full of people.\nA large Furniture Store at one end of the street, perhaps you can find and buy some furniture from here.\nA small Super market at the other end of the street." }
+        ,{
+          "type": "choice-link",
+          "content": "FlowerShop",
+          "action": "FlowerShop"
+        },
+        {
+          "type": "choice-link",
+          "content": "Restaurants",
+          "action": "Restaurants"
+        },
+        {
+          "type": "choice-link",
+          "content": "Furniture Store",
+          "action": "Furniture Store"
+        },
+        {
+          "type": "choice-link",
+          "content": "Go home",
+          "action": "House"
+        }
+      ]
     },
     "FlowerShop": {
-      "StageComponents": []
+      "StageComponents": [{ "type": "text", "content": "Hearty Rose for 45$ \n White Rose for 30$" }
+        ,{
+          "type": "choice-link",
+          "content": "Go back",
+          "action": "Market"
+        }
+      ]
     },
     "Restaurants": {
       "StageComponents": []
     },
     "Furniture Store": {
+      "StageComponents": []
+    },
+    "Super market": {
       "StageComponents": []
     },
     "Event3": {
