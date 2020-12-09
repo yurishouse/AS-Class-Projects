@@ -1,10 +1,22 @@
 {
   "GameName": "",
   "GameEnvironmentVariables": {
-    "day": { "type": "int", "value": 1 },
-    "health": { "type": "int", "value": 10 },
-    "cash": { "type": "int", "value": 1000 },
-    "Hasbed": { "type": "bool", "value": false },
+    "day": {
+      "type": "int",
+      "value": 1
+    },
+    "health": {
+      "type": "int",
+      "value": 10
+    },
+    "cash": {
+      "type": "int",
+      "value": 1000
+    },
+    "Hasbed": {
+      "type": "bool",
+      "value": false
+    },
     "eventActive": {
       "type": "bool",
       "value": false
@@ -60,8 +72,16 @@
           "type": "text",
           "content": "Warning This game may contain content subject to death, suicide, depression, and more. \n Do you with to continue"
         },
-        { "type": "choice-link", "content": "Yes", "action": "Yes" },
-        { "type": "choice-link", "content": "No", "action": "No" }
+        {
+          "type": "choice-link",
+          "content": "Yes",
+          "action": "Yes"
+        },
+        {
+          "type": "choice-link",
+          "content": "No",
+          "action": "No"
+        }
       ]
     },
     "Yes": {
@@ -69,6 +89,38 @@
         {
           "type": "text",
           "content": "Initalizing....\n\nIt's a new day, a new start of your life perhaps. You decided to move to a new place, a place where you can finally live by yourself. \n\nYou unlocked the door of your new apartment, this is going to be the place you live from now on. \n\nAs you expected, there's nothing here yet. But you have heard that there's a large store nearby, where you can get basically everything... if you have the cash."
+        },
+        {
+          "type": "command-set",
+          "variable": "Hasbed",
+          "value": {
+            "type": "bool",
+            "value": false
+          }
+        },
+        {
+          "type": "command-set",
+          "variable": "health",
+          "value": {
+            "type": "int",
+            "value": 10
+          }
+        },
+        {
+          "type": "command-set",
+          "variable": "cash",
+          "value": {
+            "type": "int",
+            "value": 1000
+          }
+        },
+        {
+          "type": "command-set",
+          "variable": "eventActive",
+          "value": {
+            "type": "bool",
+            "value": false
+          }
         },
         {
           "type": "choice-link",
@@ -83,12 +135,19 @@
           "type": "text",
           "content": "I understand, it's scary right? playing a game that you know you will eventually die no matter what you do(or, maybe not?) \n Thanks for coming though, I'll see you next time. \n \n If you're here just to check out this message \n Click [Start] to get back to Start"
         },
-        { "type": "choice-link", "content": "Start", "action": "Start" }
+        {
+          "type": "choice-link",
+          "content": "Start",
+          "action": "Start"
+        }
       ]
     },
     "House": {
       "StageComponents": [
-        { "type": "text", "content": "Home \n This is Your home." },
+        {
+          "type": "text",
+          "content": "Home \n This is Your home."
+        },
         {
           "type": "choice-link",
           "content": "Bedroom",
@@ -130,7 +189,10 @@
           "component-true": {
             "type": "components",
             "contents": [
-              { "type": "text", "content": "You have a Bed \n" },
+              {
+                "type": "text",
+                "content": "You have a Bed \n"
+              },
               {
                 "type": "choice-link",
                 "content": "Sleep on Bed",
@@ -168,22 +230,22 @@
         },
         {
           "type": "command-set",
-          "variable":"health",
-      "value": {
-          "type": "calculation",
-          "operation": "add",
-          "operands": [
+          "variable": "health",
+          "value": {
+            "type": "calculation",
+            "operation": "add",
+            "operands": [
               {
-                  "type": "variable",
-                  "variableName": "health"
+                "type": "variable",
+                "variableName": "health"
               },
               {
-                  "type": "int",
-                  "value": 1
+                "type": "int",
+                "value": 1
               }
-          ]
-      }
-      },
+            ]
+          }
+        },
         {
           "type": "conditional",
           "condition": {
@@ -203,22 +265,22 @@
               },
               {
                 "type": "command-set",
-                "variable":"health",
-            "value": {
-                "type": "calculation",
-                "operation": "minus",
-                "operands": [
+                "variable": "health",
+                "value": {
+                  "type": "calculation",
+                  "operation": "minus",
+                  "operands": [
                     {
-                        "type": "variable",
-                        "variableName": "health"
+                      "type": "variable",
+                      "variableName": "health"
                     },
                     {
-                        "type": "int",
-                        "value": 2
+                      "type": "int",
+                      "value": 2
                     }
-                ]
-            }
-            }
+                  ]
+                }
+              }
             ]
           }
         },
@@ -299,22 +361,22 @@
               },
               {
                 "type": "command-set",
-                "variable":"health",
-            "value": {
-                "type": "calculation",
-                "operation": "minus",
-                "operands": [
+                "variable": "health",
+                "value": {
+                  "type": "calculation",
+                  "operation": "minus",
+                  "operands": [
                     {
-                        "type": "variable",
-                        "variableName": "health"
+                      "type": "variable",
+                      "variableName": "health"
                     },
                     {
-                        "type": "int",
-                        "value": 2
+                      "type": "int",
+                      "value": 2
                     }
-                ]
-            }
-            }
+                  ]
+                }
+              }
             ]
           }
         },
@@ -361,23 +423,26 @@
       "StageComponents": [
         {
           "type": "command-set",
-          "variable":"day",
-      "value": {
-          "type": "calculation",
-          "operation": "add",
-          "operands": [
+          "variable": "day",
+          "value": {
+            "type": "calculation",
+            "operation": "add",
+            "operands": [
               {
-                  "type": "variable",
-                  "variableName": "day"
+                "type": "variable",
+                "variableName": "day"
               },
               {
-                  "type": "int",
-                  "value": 1
+                "type": "int",
+                "value": 1
               }
-          ]
-      }
-      },
-        { "type": "text", "content": "A new Day" },
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "content": "A new Day"
+        },
         {
           "type": "choice-link",
           "content": "Back to the house",
@@ -387,7 +452,10 @@
     },
     "LivingRoom": {
       "StageComponents": [
-        { "type": "text", "content": "This is your living room" },
+        {
+          "type": "text",
+          "content": "This is your living room"
+        },
         {
           "type": "choice-link",
           "content": "Back to the house",
@@ -405,7 +473,10 @@
           "component-true": {
             "type": "components",
             "contents": [
-              { "type": "text", "content": "You have a TV" },
+              {
+                "type": "text",
+                "content": "You have a TV"
+              },
               {
                 "type": "choice-link",
                 "content": "Watch TV",
@@ -447,15 +518,32 @@
       ]
     },
     "Watch TV": {
-      "StageComponents": [{
-        "type":"random",
-        "contents": [
-            {"type": "text", "content": "Local weather Report: Rainy day for most part of the week"},
-            {"type": "text", "content": "Some cartoon that seems to be made by japanese artist"},
-            {"type": "text", "content": "Breaking news: a remote country have been destroyed by war."},
-            {"type": "text", "content": "Local weather Report: Sunny day for most part of the week"},
-            {"type": "text", "content": "Breaking news: The suicide rate of young adult have reached it's peak. Said Professor L. S."}
-        ]},
+      "StageComponents": [
+        {
+          "type": "random",
+          "contents": [
+            {
+              "type": "text",
+              "content": "Local weather Report: Rainy day for most part of the week"
+            },
+            {
+              "type": "text",
+              "content": "Some cartoon that seems to be made by japanese artist"
+            },
+            {
+              "type": "text",
+              "content": "Breaking news: a remote country have been destroyed by war."
+            },
+            {
+              "type": "text",
+              "content": "Local weather Report: Sunny day for most part of the week"
+            },
+            {
+              "type": "text",
+              "content": "Breaking news: The suicide rate of young adult have reached it's peak. Said Professor L. S."
+            }
+          ]
+        },
         {
           "type": "choice-link",
           "content": "Turn off TV",
@@ -540,7 +628,10 @@
     },
     "Exit": {
       "StageComponents": [
-        { "type": "text", "content": "Where You want to go?" },
+        {
+          "type": "text",
+          "content": "Where You want to go?"
+        },
         {
           "type": "choice-link",
           "content": "Not now",
@@ -555,8 +646,11 @@
     },
     "Market": {
       "StageComponents": [
-        { "type": "text", "content": "A small but busy street next to where you live, It has a few shop in it. \nA Flower Shop that has a pleasant smell coming out of it.\nA few Restaurants , some are full of people.\nA large Furniture Store at one end of the street, perhaps you can find and buy some furniture from here.\nA small Super market at the other end of the street." }
-        ,{
+        {
+          "type": "text",
+          "content": "A small but busy street next to where you live, It has a few shop in it. \nA Flower Shop that has a pleasant smell coming out of it.\nA few Restaurants , some are full of people.\nA large Furniture Store at one end of the street, perhaps you can find and buy some furniture from here.\nA small Super market at the other end of the street."
+        },
+        {
           "type": "choice-link",
           "content": "FlowerShop",
           "action": "FlowerShop"
@@ -579,8 +673,12 @@
       ]
     },
     "FlowerShop": {
-      "StageComponents": [{ "type": "text", "content": "Hearty Rose for 45$ \n White Rose for 30$" }
-        ,{
+      "StageComponents": [
+        {
+          "type": "text",
+          "content": "Hearty Rose for 45$ \n White Rose for 30$"
+        },
+        {
           "type": "choice-link",
           "content": "Go back",
           "action": "Market"
@@ -598,7 +696,10 @@
     },
     "Event3": {
       "StageComponents": [
-        { "type": "text", "content": "You received a mail, it is:" },
+        {
+          "type": "text",
+          "content": "You received a mail, it is:"
+        },
         {
           "type": "random",
           "contents": [
@@ -633,7 +734,10 @@
             {
               "type": "components",
               "contents": [
-                { "type": "text", "content": "Some useless ad paper" },
+                {
+                  "type": "text",
+                  "content": "Some useless ad paper"
+                },
                 {
                   "type": "choice-link",
                   "content": "Discard it",
@@ -644,7 +748,10 @@
             {
               "type": "components",
               "contents": [
-                { "type": "text", "content": "Someone else's news paper..." },
+                {
+                  "type": "text",
+                  "content": "Someone else's news paper..."
+                },
                 {
                   "type": "choice-link",
                   "content": "What a mistake",
