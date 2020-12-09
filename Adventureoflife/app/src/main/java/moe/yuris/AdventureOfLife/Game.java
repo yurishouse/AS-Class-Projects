@@ -15,6 +15,7 @@ import java.util.LinkedList;
 import java.util.Random;
 
 public class Game {
+    // init all the String, JSONObj, LinkList and other stuff
     private String gameFilePath;
     private JSONObject gameDataObject;
     private String gameName;

@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Use IOStream to read from file
         try {
             InputStream is =  getResources().openRawResource(R.raw.game_data);
             Writer writer = new StringWriter();
@@ -52,18 +53,19 @@ public class MainActivity extends AppCompatActivity {
             } finally {
                 is.close();
             }
-
+            // save it to a String
             String jsonString = writer.toString();
+            // pass it to game class, and also init it.
             game = new Game(jsonString);
         } catch (JSONException | IOException e) {
             e.printStackTrace();
         }
         setContentView(R.layout.activity_main);
-
-        for (int i = 0; i < 20; i++) {
-            mChoiceList.addLast("Word " + i);
-        }
-        //locate main text view
+        //Test code for recycler view
+       // for (int i = 0; i < 20; i++) {
+       //     mChoiceList.addLast("Word " + i);
+       // }
+        //locate main text view(s)
         mMainTextView = findViewById(R.id.MainTextView);
         mStatus = findViewById(R.id.Status);
 
@@ -76,37 +78,49 @@ public class MainActivity extends AppCompatActivity {
         // Give the RecyclerView a default layout manager.
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        // call the initial update
         onUpdatePage();
 
 
     }
 
     public void onUpdatePage() {
+        // set main text to current story line
         mMainTextView.setText(game.getCurrentStageText());
+        // clear recycler view
         mChoiceList.clear();
+        // add choices back to recyclerview
         for (String s : game.getCurrentStageChoices()){
             mChoiceList.add(s);
         }
-        // mRecyclerView.notify();
+        // mRecyclerView.notify(); doesn't work
+        // this works
         mAdapter.notifyDataSetChanged();
+        // set Status text
         mStatus.setText(game.getCurrentStatusText());
     }
 
     public void choiceCallback(int index){
+        // a callback method
         game.chooseAndAdvance(index);
+        // call for update
         onUpdatePage();
     }
 
     public void Load(View view) {
+        //TODO
     }
 
     public void Save(View view) {
+        //TODO
     }
 
     public void ShowLog(View view) {
+        //TODO
     }
 
     public void Exit(View view) {
+        // Simple Exit Dialog, nothing fancy.
         new AlertDialog.Builder(this)
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .setTitle("Closing Game")
