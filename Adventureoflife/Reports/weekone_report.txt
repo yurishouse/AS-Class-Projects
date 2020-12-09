@@ -1,0 +1,19 @@
+// Made by Zhongli Liang
+
+This is the week one report for the final project, unfortunally, I didn't get enough time to do a lot due to 
+psychological constraint (*had to deal with multiple anxiety attack due to personal event and ptsd)
+
+I managed to get the layout sorted out for now, picked the color and made the style what I want it to be.
+My friend suggest me to go with a clickable recycler view for the options, not sure if it's the best idea in the world
+but oh well.
+
+AS for the image, unfortunally I can't use what I had in mind due to copyright issues. and the free pics I found just 
+aren't up to the task, So I abandoned the image for now.
+
+I will be making the game engine with my friend together during the next week, will need to take a look at stuff to get
+that sorted.
+
+The background is a freebie I grubed from my friend's svg personal designs, So I can use it freely, it looks nice, isn't it
+
+The color choices are intentional as to make the contrast better, I was origionally thinking about all lite pink but she 
+think otherwise, so I'm  happy that this is sorted.

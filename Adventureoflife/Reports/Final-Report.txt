@@ -1,0 +1,34 @@
+// This is a final report for the app that I made
+
+// Used Android Concepts:
+
+RecyclerView w/ click feedback
+Buttons
+Json Parsing
+Json Object
+Json Array
+LinkedList
+Alert Dialog(for the exit function)
+IOstream (for reading Json as raw)
+
+// Roadblocks
+
+Actually to be honest, I spend more time dealing with depression and my feeling than making and debugging the app...
+But if we only talk about the app, The json engine is harder to make than Me and my friend thought, we spent two weeks making it 
+But ended up running out of time and cannot finish the game json file on time, but the engine is Completely bugfree for now 
+and works as expected. 
+I'm very proud of what I created, Json is a very flexible format and can be easily ported to different platform
+The engine allows people to creates their own games with just a new game.json file, and it did not use any exist code online,
+we started from scratch defining every code block and how it works. 
+If I could have more time I will absolutely like to finish the game.json, but unfortunally this is what I can get so far.
+I was planning to make the save/load/log to work... but as for now they remains WIP and unfunctional, I'm very Sorry.
+
+// What I will do differently
+
+Definally starting more early, I wasted a whole week just with depression alone, ended up with a layout for the first week which isn't
+much.....
+I will not be changing the scope of the project if I had more time for sure....
+
+// advise to self
+
+START EARLY!!!!!!!!!!!!!!

@@ -1,0 +1,15 @@
+// Made by Zhongli Liang
+
+This is the week two report for the final project, The UI is.... still a WIP, got the recycler view and Exit working, though.
+ which is unfortunate because I actually done quite a bit under the hood but just hasn't hook it up to the interface yet.
+The game will run on a JSON based structure, the decision is made because JSON is easier to work with than multiple methods and classes just for the text
+, I've done the parsing for now but haven't got the time to translate all the Twine code over so Only a demo of the JSON is avaliable
+
+I'll also need to figure out where to put that big json file, I'm thinking somewhere under /res since it's unnecessary to put it outside the app. 
+The UI hookup will be the next big goal to do. I didn't have time to deal with it last week since I'm still stuck with heavy depression and my other class
+took a hit and is now failing. might be better if I'm dead, isn't it. 
+
+Since the UI hookup is not done, I can't say I have a working prototype either, "It ain't much, but It's honest work." is about the best I can say. Sorry.
+
+And btw, I just learned that this is more of a visual novel than a TRPG, which... fine, I like how it's going, and changing the direction now is gonna kill me,
+So, yeah, YOLO.

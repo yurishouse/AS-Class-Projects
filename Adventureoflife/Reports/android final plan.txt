@@ -1,0 +1,17 @@
+So, I wanted to make an TRPG style game that's loosely based on my life here in the US
+I will likely be using SQL for text storage but might also just put it in a large jiva file, who knows...
+The player will start in a normal room, with a limited hp(or mental points)
+They will have to decide what is more important, school, life, getting help, or other things.
+it will have at lease 3 chapter based on player interaction, the main character will be like me, depressed, without a
+meaning for life.
+The game logic is simple, you make choices with buttons, and try to find the meaning for life before getting eaten by depression and dies
+I'm thinking about adding inventory and life system as well. maybe a ring around the interface telling people the state of 
+the player.
+winning senario can include but not limited to: finding the singificant other and complete the quest line, or have a very high
+mental health point that you saved yourself.
+Death senario can include losing all hp and die in suicide, getting prick by people around too much and losing control(hospital questline/end(?)),
+ or player can ran into a dead end where they have no choice but to die.
+there's will be pictures, from real life, probably r rated since I'm in no way trying to publish it to any official places. 
+// I will include a disclaimer.h indicating it.
+The game is dark, but also hopeful, I'm actually wanting to make it into a github release. to inspiring peoples, to find the 
+meaning of their life.
