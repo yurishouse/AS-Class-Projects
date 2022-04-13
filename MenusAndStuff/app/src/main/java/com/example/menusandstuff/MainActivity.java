@@ -1,5 +1,5 @@
 package com.example.menusandstuff;
-// made by Zhongli Liang
+// made by Shiina Yuri
 
 import android.content.DialogInterface;
 import android.graphics.Color;

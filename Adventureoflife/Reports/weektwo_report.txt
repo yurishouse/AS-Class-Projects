@@ -1,4 +1,4 @@
-// Made by Zhongli Liang
+// Made by Shiina Yuri
 
 This is the week two report for the final project, The UI is.... still a WIP, got the recycler view and Exit working, though.
  which is unfortunate because I actually done quite a bit under the hood but just hasn't hook it up to the interface yet.
